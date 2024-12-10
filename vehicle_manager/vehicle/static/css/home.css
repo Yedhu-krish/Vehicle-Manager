@@ -1,0 +1,25 @@
+.image-container{
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+
+
+
+
+.message{
+    position: fixed;
+    color: white;
+    z-index: 10;
+    top: 100px;
+    left: 100px;
+   
+}
+
+
+.image{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}

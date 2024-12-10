@@ -16,6 +16,8 @@ from vehicle.decorators import authenication
 
 from django.utils.decorators import method_decorator
 
+from django.contrib import messages
+
 # Create your views here.
 
 
@@ -39,6 +41,7 @@ class VehicleCreateVIew(View):
 
             form_data = form_instance.cleaned_data
 
+            messages.success(request,"Vehicle details Added Successfully")
             Vehicle.objects.create(**form_data)
         return redirect('viewvehicle')
 
@@ -106,6 +109,7 @@ class vehicleDeleteView(View):
 
         Vehicle.objects.get(id=id).delete()
 
+        messages.warning(request,"Deleted successfully")
         return redirect('viewvehicle')
 
 
@@ -147,7 +151,9 @@ class VehicleUpdateView(View):
 
             Vehicle.objects.filter(id=id).update(**data)  # we need to use filter instead of get to update(else error)
 
+            messages.warning(request,"Details Updated !")
             return redirect('viewvehicle')
+        
         return render(request,self.template_name,{'form':form_instance})
     
 
@@ -214,7 +220,7 @@ class SignInView(View):
 
                 login(request,user_object)
 
-                return redirect('viewvehicle')
+                return redirect('home')
             
         return render(request,self.template_name,{'form':form_instance})
 
@@ -226,9 +232,12 @@ class LogoutView(View):
 
         logout(request)
 
+        messages.success(request,"Logged out Successfully")
         return redirect('signin')
     
-        
+def home_view(request):
+
+    return render(request,'home.html')
 
 
 

@@ -1,0 +1,13 @@
+{%extends 'base.html'%}
+{%load static%}
+
+{%block main_block%}
+
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+
+<div class="image-container col-lg-3 col-md-6">
+   
+        <h2 class="message" style="z-index: 10;">Welcome {{request.user}}</h2>
+    <img class="image col-lg-3 col-md-6" src="{% static 'images/imggg.jpg' %}" alt="">
+</div>
+{%endblock%}
