@@ -1,0 +1,28 @@
+{%extends 'base.html'%}
+
+{%block main_block%}
+
+
+    <div class="container bg-light shadow-lg mt-5 pb-5">
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-4">
+                <h3>Update Details</h3>
+    <form action="" method="post">
+        {% csrf_token%}
+
+        {{data}}
+        <div class="text-center">
+            <button class="btn btn-primary" type="submit">Update</button>
+        </div>
+        
+
+
+    </form>
+            </div>
+            <div class="col-4"></div>
+        </div>
+    </div>
+    
+
+{%endblock%}

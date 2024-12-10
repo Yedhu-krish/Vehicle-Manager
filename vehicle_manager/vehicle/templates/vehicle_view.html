@@ -1,0 +1,53 @@
+{%extends 'base.html'%}
+
+{%block main_block%}
+
+<div class="container">
+    <form action="">
+
+        <select name="fuel" id="" onchange="this.form.submit()" >
+            <option value="all" {%if selected_category == all %} selected {%endif%}>All</option>
+            {%for type in fuel_type %}
+            <option value="{{type}}" {%if selected_category == type %} selected {%endif%} >{{type}}</option>
+            {%endfor%}
+        </select>
+
+        <select name="vehicle_type" id="" onchange="this.form.submit()">
+
+            <option value="all" {%if selected_category == all %} selected {%endif%}>All</option>
+            {%for cat in vehicle_type%}
+            <option value="{{cat}}" {%if selected_category == cat %} selected {%endif%}>{{cat}}</option>
+            {%endfor%}
+        
+        </select>
+
+    </form> 
+
+    <table class="table table-bordered table-sm table-success table-striped-columns mt-5">
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Engine</th>
+            <th>Fuel</th>
+            <th>Amount</th>
+            <th>Action</th>
+        </tr>
+        {% for i in data %}
+        <tr>
+            <td>{{i.name}}</td>
+            <td>{{i.type}}</td>
+            <td>{{i.engine}}</td>
+            <td>{{i.fuel}}</td>
+            <td>{{i.amount}}</td>
+            <td>
+                <a href="{%url 'vehicledetailview' i.id%}"><i class="fa-sharp fa-solid fa-eye"></i></a><br>
+                <a href="{%url 'vehicledelete' i.id%}"><i class="fa-solid fa-trash"></i></a> <br>
+                <a href="{%url 'vehicleupdate' i.id%}"><i class="fa-regular fa-pen-to-square"></i></a>
+            </td>
+            
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{%endblock%}

@@ -1,0 +1,22 @@
+{%extends 'base.html'%}
+
+{%block main_block%}
+    <h3>Detailed View </h3>
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Engine</th>
+            <th>Fuel</th>
+            <th>Amount</th>
+        </tr>
+        <tr>
+            <td>{{data.name}}</td>
+            <td>{{data.type}}</td>
+            <td> {{data.engine}}</td>
+            <td>{{data.fuel}}</td>
+            <td>{{data.amount}}</td>
+        </tr>
+    </table>
+   
+{%endblock%}
